@@ -181,6 +181,10 @@ namespace Celeste {
                     area.MountainCursor = meta.Mountain?.Cursor?.ToVector3() ?? area.MountainCursor;
                     area.MountainState = meta.Mountain?.State ?? area.MountainState;
 
+                    area.MountainIdle.SetName(meta.Mountain?.Name);
+                    area.MountainSelect.SetName(meta.Mountain?.Name);
+                    area.MountainZoom.SetName(meta.Mountain?.Name);
+
                     area.SetCompleteScreenMeta(meta.CompleteScreen);
                 }
 

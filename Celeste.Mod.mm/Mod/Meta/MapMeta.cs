@@ -122,6 +122,7 @@ namespace Celeste.Mod.Meta {
             => new CheckpointData(Level, Name, MapMeta.GetInventory(Inventory), Dreaming, AudioState?.Convert());
     }
     public class MapMetaMountain {
+        public string Name { get; set; } = null;
         public MapMetaMountainCamera Idle { get; set; } = null;
         public MapMetaMountainCamera Select { get; set; } = null;
         public MapMetaMountainCamera Zoom { get; set; } = null;

@@ -141,7 +141,6 @@ namespace Celeste {
 
         unsafe static patch_AreaKey ToPatch(this AreaKey self)
             => *((patch_AreaKey*) &self);
-
         unsafe static AreaKey ToOrig(this patch_AreaKey self)
             => *((AreaKey*) &self);
 
