@@ -26,27 +26,7 @@ namespace Celeste {
 
         public Quaternion Rotation;
 
-        public const int NameLength = 511;
-        [XmlIgnore]
-        [NonSerialized]
-        public fixed char _Name[NameLength + 1];
-        public string Name {
-            get {
-                fixed (char* ptr = _Name)
-                    return Marshal.PtrToStringUni((IntPtr) ptr);
-            }
-            set {
-                // Can probably be optimized.
-                char[] chars = value.ToCharArray();
-                int length = Math.Min(NameLength - 1, chars.Length);
-                fixed (char* to = _Name) {
-                    Marshal.Copy(chars, 0, (IntPtr) to, length);
-                    for (int i = length; i < NameLength; i++) {
-                        to[i] = '\0';
-                    }
-                }
-            }
-        }
+        public string Name;
 
     }
     public static class MountainCameraExt {
@@ -54,17 +34,12 @@ namespace Celeste {
         // Mods can't access patch_ classes directly.
         // We thus expose any new members through extensions.
 
-        unsafe static patch_MountainCamera ToPatch(this MountainCamera self)
-            => *((patch_MountainCamera*) &self);
-        unsafe static MountainCamera ToOrig(this patch_MountainCamera self)
-            => *((MountainCamera*) &self);
-
         public static string GetName(this MountainCamera self)
-            => ToPatch(self).Name;
+            => ((patch_MountainCamera) (object) self).Name;
         public static MountainCamera SetName(this MountainCamera self, string value) {
-            patch_MountainCamera p = self.ToPatch();
+            patch_MountainCamera p = (patch_MountainCamera) (object) self;
             p.Name = value;
-            return p.ToOrig();
+            return (MountainCamera) (object) p;
         }
 
     }

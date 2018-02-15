@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.IO.Compression;
+using Ionic.Zip;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -83,9 +83,9 @@ namespace Celeste.Mod {
                     for (int ari = 0; ari < asmRefs.Length; ari++) {
                         AssemblyName asmRef = asmRefs[ari];
                         // Ugly hardcoded supported framework list.
-                        if (!asmRef.FullName.Contains("XNA") &&
-                            !asmRef.FullName.Contains("FNA") &&
-                            !asmRef.FullName.Contains("MonoGame") // Contains many differences - we should print a warning.
+                        if (!asmRef.FullName.ToLowerInvariant().Contains("xna") &&
+                            !asmRef.FullName.ToLowerInvariant().Contains("fna") &&
+                            !asmRef.FullName.ToLowerInvariant().Contains("monogame") // Contains many differences - we should print a warning.
                         )
                             continue;
                         Assembly asm = Assembly.Load(asmRef);
@@ -102,6 +102,28 @@ namespace Celeste.Mod {
                     }
 
                     return _SharedRelinkMap;
+                }
+            }
+
+            private static MonoModder _Modder;
+            public static MonoModder Modder {
+                get {
+                    if (_Modder != null)
+                        return _Modder;
+
+                    _Modder = new MonoModder() {
+                        CleanupEnabled = false,
+                        RelinkModuleMap = SharedRelinkModuleMap,
+                        RelinkMap = SharedRelinkMap,
+                        DependencyDirs = {
+                            PathGame
+                        }
+                    };
+
+                    return _Modder;
+                }
+                set {
+                    _Modder = value;
                 }
             }
 
@@ -132,30 +154,27 @@ namespace Celeste.Mod {
                 if (depResolver == null)
                     depResolver = GenerateModDependencyResolver(meta);
 
-                using (MonoModder modder = new MonoModder() {
-                    Input = stream,
-                    OutputPath = cachedPath,
-                    CleanupEnabled = false,
-                    RelinkModuleMap = SharedRelinkModuleMap,
-                    RelinkMap = SharedRelinkMap,
-                    DependencyDirs = {
-                        PathGame
-                    },
-                    MissingDependencyResolver = depResolver
-                })
-                    try {
-                        modder.ReaderParameters.ReadSymbols = false;
-                        modder.WriterParameters.WriteSymbols = false;
-                        modder.WriterParameters.SymbolWriterProvider = null;
+                try {
+                    MonoModder modder = Modder;
 
-                        modder.Read();
-                        modder.MapDependencies();
-                        modder.AutoPatch();
-                        modder.Write();
-                    } catch (Exception e) {
-                        Logger.Log("relinker", $"Failed relinking {meta}: {e}");
-                        return null;
-                    }
+                    modder.Input = stream;
+                    modder.OutputPath = cachedPath;
+                    modder.MissingDependencyResolver = depResolver;
+
+                    modder.ReaderParameters.ReadSymbols = false;
+                    modder.WriterParameters.WriteSymbols = false;
+                    modder.WriterParameters.SymbolWriterProvider = null;
+
+                    modder.Read();
+                    modder.MapDependencies();
+                    modder.AutoPatch();
+                    modder.Write();
+                } catch (Exception e) {
+                    Logger.Log("relinker", $"Failed relinking {meta}: {e}");
+                    return null;
+                } finally {
+                    Modder.ClearCaches(moduleSpecific: true);
+                }
 
                 if (File.Exists(cachedChecksumPath)) {
                     File.Delete(cachedChecksumPath);
@@ -170,16 +189,12 @@ namespace Celeste.Mod {
                 if (!string.IsNullOrEmpty(meta.PathArchive)) {
                     return delegate (MonoModder mod, ModuleDefinition main, string name, string fullName) {
                         string asmName = name + ".dll";
-                        using (Stream zipStream = File.OpenRead(meta.PathArchive))
-                        using (ZipArchive zip = new ZipArchive(zipStream, ZipArchiveMode.Read)) {
-                            foreach (ZipArchiveEntry entry in zip.Entries) {
-                                if (entry.FullName != asmName)
+                        using (ZipFile zip = new ZipFile(meta.PathArchive)) {
+                            foreach (ZipEntry entry in zip.Entries) {
+                                if (entry.FileName != asmName)
                                     continue;
-                                using (Stream stream = entry.Open())
-                                using (MemoryStream ms = new MemoryStream()) {
-                                    stream.CopyTo(ms);
-                                    ms.Seek(0, SeekOrigin.Begin);
-                                    return ModuleDefinition.ReadModule(ms, mod.GenReaderParameters(false));
+                                using (MemoryStream stream = entry.ExtractStream()) {
+                                    return ModuleDefinition.ReadModule(stream, mod.GenReaderParameters(false));
                                 }
                             }
                         }
