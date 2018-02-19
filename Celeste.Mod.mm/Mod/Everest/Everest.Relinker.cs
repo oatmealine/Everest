@@ -112,6 +112,7 @@ namespace Celeste.Mod {
                         return _Modder;
 
                     _Modder = new MonoModder() {
+                        ReadingMode = ReadingMode.Immediate,
                         CleanupEnabled = false,
                         RelinkModuleMap = SharedRelinkModuleMap,
                         RelinkMap = SharedRelinkMap,
@@ -119,6 +120,7 @@ namespace Celeste.Mod {
                             PathGame
                         }
                     };
+                    _Modder.Relinker = _Modder.DefaultUncachedRelinker;
 
                     return _Modder;
                 }

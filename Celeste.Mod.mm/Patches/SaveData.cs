@@ -2,6 +2,7 @@
 
 using Celeste.Mod;
 using Microsoft.Xna.Framework.Input;
+using Monocle;
 using MonoMod;
 using System;
 using System.Collections.Generic;
@@ -17,23 +18,57 @@ namespace Celeste {
         public List<LevelSetStats> LevelSets = new List<LevelSetStats>();
 
         [XmlIgnore]
-        public string LevelSet => LastArea.GetLevelSet() ?? "Celeste";
+        public string LevelSet => LevelSetStats.Name;
 
         [XmlIgnore]
         public LevelSetStats LevelSetStats {
             get {
-                LevelSetStats set = LevelSets.Find(other => other.Name == LevelSet);
-                if (set != null)
-                    return set;
+                string name = LastArea.GetLevelSet() ?? "Celeste";
+                LevelSetStats set = LevelSets.Find(other => other.Name == name);
 
-                set = new LevelSetStats {
-                    Name = LevelSet,
-                    UnlockedAreas = 0
-                };
-                LevelSets.Add(set);
+                if (set == null) {
+                    // Just silently add the missing levelset.
+                    set = new LevelSetStats {
+                        Name = name,
+                        UnlockedAreas = 0
+                    };
+                    LevelSets.Add(set);
+                }
+
+                // If the levelset doesn't exist in AreaData.Areas anymore (offset == -1), fall back.
+                if (name != "Celeste" && set.AreaOffset == -1) {
+                    LastArea = AreaKey.Default;
+                    // Recurse - get the new, proper level set.
+                    return LevelSetStats;
+                }
+
                 return set;
             }
         }
+
+        // We want use LastArea_Safe instead of LastArea to avoid breaking vanilla Celeste.
+
+        [MonoModHook("Celeste.AreaKey Celeste.SaveData::LastArea_Unsafe")]
+        public new AreaKey LastArea;
+
+        [MonoModRemove]
+        public AreaKey LastArea_Unsafe;
+
+        [MonoModHook("Celeste.AreaKey Celeste.SaveData::LastArea")]
+        public AreaKey LastArea_Safe;
+
+        // We want use CurrentSession_Safe instead of CurrentSession to avoid breaking vanilla Celeste.
+
+        [MonoModHook("Celeste.Session Celeste.SaveData::CurrentSession_Unsafe")]
+        public new Session CurrentSession;
+
+        [MonoModRemove]
+        public Session CurrentSession_Unsafe;
+
+        [MonoModHook("Celeste.Session Celeste.SaveData::CurrentSession")]
+        public Session CurrentSession_Safe;
+
+        // Legacy code should benefit from the new LevelSetStats.
 
         [XmlAttribute]
         [MonoModHook("System.Int32 Celeste.SaveData::UnlockedAreas_Unsafe")]
@@ -58,6 +93,7 @@ namespace Celeste {
                 LevelSetStats.UnlockedAreas = value - LevelSetStats.AreaOffset;
             }
         }
+
 
         [XmlAttribute]
         [MonoModHook("System.Int32 Celeste.SaveData::TotalStrawberries_Unsafe")]
@@ -137,9 +173,11 @@ namespace Celeste {
 
         [MonoModReplace]
         public new void AfterInitialize() {
+            // Vanilla / new saves don't have the LevelSets list.
             if (LevelSets == null)
                 LevelSets = new List<LevelSetStats>();
 
+            // Add missing LevelSetStats.
             foreach (AreaData area in AreaData.Areas) {
                 string set = area.GetLevelSet();
                 if (!LevelSets.Exists(other => other.Name == set)) {
@@ -150,6 +188,7 @@ namespace Celeste {
                 }
             }
 
+            // Fill each LevelSetStats with its areas.
             foreach (LevelSetStats set in LevelSets) {
                 set.SaveData = this;
                 List<AreaStats> areas = set.Areas;
@@ -157,11 +196,15 @@ namespace Celeste {
                     areas = Areas_Unsafe;
 
                 int offset = set.AreaOffset;
+                // LevelSet gone - let's preserve the data as-is.
+                if (offset == -1)
+                    continue;
+
                 int count = AreaData.Areas.Count(other => other.GetLevelSet() == set.Name);
                 while (areas.Count < count) {
                     areas.Add(new AreaStats(offset + areas.Count));
                 }
-                while (areas.Count > AreaData.Areas.Count) {
+                while (areas.Count > count) {
                     areas.RemoveAt(areas.Count - 1);
                 }
                 for (int i = 0; i < count; i++) {
@@ -194,13 +237,25 @@ namespace Celeste {
                 }
 
                 foreach (AreaStats area in areas) {
-                    if (AreaData.Get(area.ID).GetSID() != area.GetSID())
-                        continue;
                     area.CleanCheckpoints();
                 }
             }
 
+            // Carry over any progress from vanilla saves.
+            if (LastArea_Unsafe.ID != 0)
+                LastArea_Safe = LastArea_Unsafe;
+            if (CurrentSession_Unsafe != null)
+                CurrentSession_Safe = CurrentSession_Unsafe;
 
+            // Trick unmodded instances of Celeste to thinking that we last selected prologue / played no level.
+            LastArea_Unsafe = AreaKey.Default;
+            CurrentSession_Unsafe = null;
+
+            // Fix out of bounds areas.
+            if (LastArea.ID < 0 || LastArea.ID >= AreaData.Areas.Count)
+                LastArea = AreaKey.Default;
+
+            // Debug mode shouldn't auto-enter into a level.
             if (DebugMode) {
                 CurrentSession = null;
             }
@@ -216,21 +271,53 @@ namespace Celeste {
                 Assists = default(Assists);
             }
 
+            // Disable the GameSpeed clamping - allow mods to "break" this.
+            /*
             if (Assists.GameSpeed < 5 || Assists.GameSpeed > 10) {
                 Assists.GameSpeed = 10;
             }
+            */
 
             Everest.Invoke("LoadSaveData", FileSlot);
         }
 
         public extern void orig_BeforeSave();
         public new void BeforeSave() {
+            // If we're in a Vanilla-compatible area, copy from _Safe (new) to _Unsafe (legacy).
+            if (LastArea_Safe.GetLevelSet() == "Celeste")
+                LastArea_Unsafe = LastArea_Safe;
+            if (CurrentSession_Safe != null && CurrentSession_Safe.Area.GetLevelSet() == "Celeste")
+                CurrentSession_Unsafe = CurrentSession_Safe;
+
             orig_BeforeSave();
+
             Everest.Invoke("SaveSaveData", FileSlot);
         }
 
         public LevelSetStats GetLevelSetStatsFor(string name)
             => LevelSets.Find(set => set.Name == name);
+
+        public AreaStats GetAreaStatsFor(AreaKey key)
+            => LevelSets.Find(set => set.Name == key.GetLevelSet()).Areas.Find(area => area.GetSID() == key.GetSID());
+
+        public extern HashSet<string> orig_GetCheckpoints(AreaKey area);
+        public new HashSet<string> GetCheckpoints(AreaKey area) {
+            HashSet<string> checkpoints = orig_GetCheckpoints(area);
+
+            if (Celeste.PlayMode == Celeste.PlayModes.Event ||
+                DebugMode || CheatMode) {
+                return checkpoints;
+            }
+
+            // Remove any checkpoints which don't exist in the level.
+            ModeProperties mode = AreaData.Get(area).Mode[(int) area.Mode];
+            if (mode == null) {
+                checkpoints.Clear();
+            } else {
+                checkpoints.RemoveWhere(a => mode.Checkpoints.Any(b => b.Level == a));
+            }
+            return checkpoints;
+        }
 
     }
     [Serializable]
@@ -241,7 +328,17 @@ namespace Celeste {
         [XmlAttribute]
         public string Name;
 
-        public int UnlockedAreas;
+        [XmlIgnore]
+        [NonSerialized]
+        private int _UnlockedAreas;
+        public int UnlockedAreas {
+            get {
+                return Calc.Clamp(_UnlockedAreas, 0, AreasIncludingCeleste?.Count ?? 0);
+            }
+            set {
+                _UnlockedAreas = value;
+            }
+        }
 
         public List<AreaStats> Areas = new List<AreaStats>();
         [XmlIgnore]
@@ -287,7 +384,7 @@ namespace Celeste {
         [XmlIgnore]
         public int TotalHeartGems {
             get {
-                return AreasIncludingCeleste.Count(area => area.Modes.Any(mode => mode?.HeartGem ?? false));
+                return AreasIncludingCeleste.Sum(area => area.Modes.Count(mode => mode?.HeartGem ?? false));
             }
         }
 

@@ -40,14 +40,15 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ] ; then
   pushd Celeste.Mod.mm/Artifact
   zip "$ROOT/$ZIP" *
   popd
-  chmod a+x mod.sh
-  zip "$ROOT/$ZIP" mod.bat mod.sh
+  pushd MiniInstaller/Artifact
+  zip "$ROOT/$ZIP" *
+  popd
   
   echo "Get latest builds_index.txt"
   wget -O ./travis/builds_index.txt https://lollyde.ams3.digitaloceanspaces.com/everest-travis/builds_index.txt
   
   echo "Update builds_index.txt"
-  printf "/everest-travis/$ZIP $ZIP\n" >> ./travis/builds_index.txt
+  printf "/lollyde/everest-travis/$ZIP $ZIP\n" >> ./travis/builds_index.txt
   
   echo "Create updated index.html"
   ./travis/html-gen.sh

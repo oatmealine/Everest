@@ -47,6 +47,24 @@
       <HintPath>..\lib-stripped\FNA.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="I18N">
+      <HintPath>..\lib\I18N.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>..\lib\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.MidEast">
+      <HintPath>..\lib\I18N.MidEast.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Other">
+      <HintPath>..\lib\I18N.Other.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.Rare">
+      <HintPath>..\lib\I18N.Rare.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N.West">
+      <HintPath>..\lib\I18N.West.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>..\lib\Mono.Cecil.dll</HintPath>
     </Reference>
@@ -76,14 +94,16 @@
   <ItemGroup>
     <Compile Include="Mod\CoreModule\CoreModuleSaveData.cs" />
     <Compile Include="Mod\CoreModule\CoreModuleSettings.cs" />
+    <Compile Include="Mod\Entities\LevelFlagTrigger.cs" />
     <Compile Include="Mod\Everest\Commands.cs" />
+    <Compile Include="Mod\Everest\Everest.Update.cs" />
+    <Compile Include="Mod\Helpers\FakeAssembly.cs" />
     <Compile Include="Mod\Meta\MapMetaCompleteScreen.cs" />
     <Compile Include="Mod\Module\EverestModuleSaveData.cs" />
     <Compile Include="Mod\Module\EverestModuleSettings.cs" />
     <Compile Include="Mod\Module\EverestModuleMetadata.cs" />
     <Compile Include="Mod\Helpers\AssetMetadata.cs" />
     <Compile Include="Mod\Helpers\ContentExtensions.cs" />
-    <Compile Include="Mod\Everest\Everest.Experiments.cs" />
     <Compile Include="Mod\Everest\Everest.Events.cs" />
     <Compile Include="Mod\Everest\Everest.Content.cs" />
     <Compile Include="Mod\Everest\Everest.Relinker.cs" />
@@ -104,7 +124,10 @@
     <Compile Include="Mod\Meta\MapMeta.cs" />
     <Compile Include="Mod\Meta\MTextureMeta.cs" />
     <Compile Include="Mod\Helpers\YamlHelper.cs" />
+    <Compile Include="Mod\Oui\OuiHelper_Shutdown.cs" />
     <Compile Include="Mod\Oui\OuiHelper_ChapterSelect_LevelSet.cs" />
+    <Compile Include="Mod\Oui\OuiLoggedProgress.cs" />
+    <Compile Include="Mod\Oui\OuiVersionList.cs" />
     <Compile Include="Mod\Oui\TextMenuExt.cs" />
     <Compile Include="Mod\Oui\OuiMapList.cs" />
     <Compile Include="Mod\Oui\OuiModOptions.cs" />
@@ -120,10 +143,12 @@
     <Compile Include="Patches\AreaStats.cs" />
     <Compile Include="Patches\LevelEnter.cs" />
     <Compile Include="Patches\Input.cs" />
+    <Compile Include="Patches\Monocle\ErrorLog.cs" />
     <Compile Include="Patches\Monocle\RendererList.cs" />
     <Compile Include="Patches\OuiChapterPanel.cs" />
     <Compile Include="Patches\OuiChapterSelectIcon.cs" />
     <Compile Include="Patches\OuiChapterSelect.cs" />
+    <Compile Include="Patches\Overworld.cs" />
     <Compile Include="Patches\SaveData.cs" />
     <Compile Include="Patches\Monocle\EntityList.cs" />
     <Compile Include="Patches\TextMenu.cs" />

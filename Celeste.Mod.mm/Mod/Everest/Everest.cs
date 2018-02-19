@@ -8,7 +8,10 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,16 +23,10 @@ namespace Celeste.Mod {
 
         public readonly static Version Version;
         public readonly static string VersionSuffix;
-        static Everest() {
-            int versionSplitIndex = VersionString.IndexOf('-');
-            if (versionSplitIndex == -1) {
-                Version = new Version(VersionString);
-                VersionSuffix = null;
-            } else {
-                Version = new Version(VersionString.Substring(0, versionSplitIndex));
-                VersionSuffix = VersionString.Substring(versionSplitIndex + 1);
-            }
-        }
+        public readonly static string VersionTag;
+        public readonly static string VersionCommit;
+
+        public static string VersionCelesteString => $"{Engine.Instance.Version} [Everest: {VersionString}]";
 
         public static ReadOnlyCollection<string> Args { get; internal set; }
 
@@ -41,6 +38,28 @@ namespace Celeste.Mod {
 
         public static string PathGame { get; internal set; }
         public static string PathSettings { get; internal set; }
+
+        static Everest() {
+            int versionSplitIndex = VersionString.IndexOf('-');
+            if (versionSplitIndex == -1) {
+                Version = new Version(VersionString);
+                VersionSuffix = "";
+                VersionTag = "";
+                VersionCommit = "";
+
+            } else {
+                Version = new Version(VersionString.Substring(0, versionSplitIndex));
+                VersionSuffix = VersionString.Substring(versionSplitIndex + 1);
+                versionSplitIndex = VersionSuffix.IndexOf('-');
+                if (versionSplitIndex == -1) {
+                    VersionTag = VersionSuffix;
+                    VersionCommit = "";
+                } else {
+                    VersionTag = VersionString.Substring(0, versionSplitIndex);
+                    VersionCommit = VersionString.Substring(versionSplitIndex + 1);
+                }
+            }
+        }
 
         public static void ParseArgs(string[] args) {
             // Expose the arguments to all other mods in a read-only collection.
@@ -62,6 +81,16 @@ namespace Celeste.Mod {
         }
 
         public static void Boot() {
+            Logger.Log("core", "Booting Everest");
+            Logger.Log("core", $"VersionCelesteString: {VersionCelesteString}");
+
+            if (Type.GetType("Mono.Runtime") != null) {
+                // Mono hates HTTPS.
+                ServicePointManager.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => {
+                    return true;
+                };
+            }
+
             PathGame = Path.GetDirectoryName(typeof(Celeste).Assembly.Location);
             PathSettings = Path.Combine(PathGame, "ModSettings");
             Directory.CreateDirectory(PathSettings);
@@ -75,6 +104,9 @@ namespace Celeste.Mod {
 
             // We're ready - invoke Load in all loaded modules, including CoreModule.
             Invoke("Load");
+
+            // Start requesting the version list ASAP.
+            Updater.RequestAll();
         }
 
         public static void Register(this EverestModule module) {
