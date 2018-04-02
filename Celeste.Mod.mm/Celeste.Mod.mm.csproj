@@ -775,6 +775,228 @@
     <EmbeddedResource Include="Content\Graphics\Atlases\OverworldLQ\snow.png">
       <LogicalName>Content\Graphics\Atlases\OverworldLQ\snow.png</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal00.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal00.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal01.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal01.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal02.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal02.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal03.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal03.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal04.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal04.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal05.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal05.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal06.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal06.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal07.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal07.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal08.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal08.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal09.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal09.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal10.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal10.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal11.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal11.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal12.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal12.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal13.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal13.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal14.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal14.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal15.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal15.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal16.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal16.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal17.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal17.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal18.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal18.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal19.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal19.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal20.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal20.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal21.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal21.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal22.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal22.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal23.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal23.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal24.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal24.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal25.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal25.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal26.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal26.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal27.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal27.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal28.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal28.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal29.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal29.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal30.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal30.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal31.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal31.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal32.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal32.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal33.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal33.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal34.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal34.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal35.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal35.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal36.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal36.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal37.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal37.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal38.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal38.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal39.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal39.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal40.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal40.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal41.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal41.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal42.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal42.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal43.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal43.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal44.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal44.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal45.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal45.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal46.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal46.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal47.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal47.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal48.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal48.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal49.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal49.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal50.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal50.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal51.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal51.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal52.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal52.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal53.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal53.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal54.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal54.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal55.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal55.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal56.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal56.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal57.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal57.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal58.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal58.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal59.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal59.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal60.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal60.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal61.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/normal61.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/seed00.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/seed00.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/seed01.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/seed01.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings00.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings00.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings01.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings01.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings02.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings02.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings03.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings03.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings04.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings04.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings05.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings05.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings06.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings06.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings07.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings07.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings08.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings08.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings09.png">
+      <LogicalName>Content/Graphics/Atlases/Gameplay/collectables/strawberry/wings09.png</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\lib-fna\libjpeg-9.dll">
