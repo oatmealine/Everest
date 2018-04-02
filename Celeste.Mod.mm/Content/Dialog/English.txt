@@ -73,3 +73,52 @@
 	
 	UPDATER_SRC_TRAVIS= 					Development Builds (travis)
 	UPDATER_SRC_GITHUB= 					Stable Builds
+
+CH1_THEO_A=
+		[THEO left normal]
+		Ho there, fellow traveller! I dropped a bunch of vegetables. Those things are gross.
+
+		[MADELINE right distracted]
+		Oh... hi.
+
+		{trigger 0 Madeline approaches}
+		
+		[THEO left thinking]
+		This mysterious clone of me told me to eat my vegetables.
+		
+		[THEO left excited]
+		I would never do such a thing!
+		
+		[THEO left normal]
+		But anyway, what a killer night for a hike!
+
+		[MADELINE right distracted]
+		I guess so.
+
+		[THEO left normal]
+		This place is so crazy. 
+
+		[THEO left excited]
+		I kind of can't believe it exists!
+
+		[MADELINE right sad]
+		Not the easiest climb, is it?
+
+		[MADELINE right distracted]
+		But I guess that's what I was looking for...
+		
+		[THEO left normal]
+		Whoa, that sounds pretty serious.
+		I'm just happy to see another{n}human in such a lonely place.
+
+		[THEO left excited]
+		I'm {+ theo} by the way, an adventurer from a {>> 0.3}{~}far off land!{/~}{>>}
+		
+		[MADELINE right sad]
+		...{0.2}
+
+		[THEO left thinking]
+		Not much of a talker, are you?
+
+		[THEO left normal]
+		Mysterious lone wolf type, I get it.{n}I'll just imagine some dark backstory for you.

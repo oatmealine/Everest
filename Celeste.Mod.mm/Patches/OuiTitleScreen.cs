@@ -21,7 +21,7 @@ namespace Celeste {
         public void ctor_OuiTitleScreen() {
             orig_ctor_OuiTitleScreen();
 
-            version += $"\nEverest v.{Everest.Version}-{Everest.VersionTag}";
+            version += $"\nEverest: Theo Edition v1.0.0";
         }
 
     }
